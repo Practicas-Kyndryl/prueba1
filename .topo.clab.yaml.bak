@@ -1,0 +1,47 @@
+name: LAN2
+
+topology:
+  nodes:
+    router1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:1.0.0
+      startup-config: configs/router1.cfg.partial
+    router2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:1.0.0
+      startup-config: configs/router2.cfg.partial
+    router3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:1.0.0
+      startup-config: configs/router3.cfg.partial
+    router4:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:1.0.0
+      startup-config: configs/router4.cfg.partial
+    router5:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:1.0.0
+      startup-config: configs/router5.cfg.partial
+    switch1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
+      startup-config: configs/switch1.cfg.partial
+    switch2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
+      startup-config: configs/switch2.cfg.partial
+    switch3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
+      startup-config: configs/switch3.cfg.partial
+  links:
+    - endpoints: ["router1:e0/1","switch1:e0/1"]
+    - endpoints: ["router2:e0/1","switch1:e0/2"]
+    - endpoints: ["router3:e0/1","switch1:e0/3"]
+    - endpoints: ["switch1:e1/0","switch2:e0/1"]
+    - endpoints: ["switch2:e0/2","switch3:e0/1"]
+    - endpoints: ["router4:e0/1","switch3:e0/2"]
+    - endpoints: ["router5:e0/1","switch3:e0/3"]

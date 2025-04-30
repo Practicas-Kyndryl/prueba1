@@ -1,0 +1,30 @@
+
+name: prueba1
+
+topology:
+  kinds:
+    nokia_srlinux:
+      type: ixrd2l
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    h1:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.60.2/30 dev eth1
+    h2:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      exec:
+        - ip link set dev eth1 up
+        - ip addr add 10.10.70.2/30 dev eth1
+    srl1:
+      kind: nokia_srlinux
+    
+  links:
+  - endpoints: [ "srl1:e1-1", "h1:eth1" ]
+  - endpoints: [ "srl1:e1-2", "h2:eth1" ]
+ 

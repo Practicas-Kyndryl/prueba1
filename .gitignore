@@ -1,2 +1,3 @@
-clab-prueba1
-*.back 
+./clab-prueba1
+*.bak 
+*.tmp

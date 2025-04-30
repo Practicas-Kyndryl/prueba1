@@ -1,3 +1,2 @@
 ./clab-prueba1
-*.bak 
-*.tmp
+.clab-prueba1.yml.bak
